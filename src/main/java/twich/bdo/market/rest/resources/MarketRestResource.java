@@ -30,14 +30,7 @@ public class MarketRestResource {
     }
 
     @GET
-    @Path("item/name={name}")
-    @Produces(MediaType.APPLICATION_JSON)
-    public BdoItem getItemByName(@PathParam("name") String name) {
-        return myMarketService.getItemByName(name).get();
-    }
-
-    @GET
-    @Path("item/id={id}")
+    @Path("item/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public BdoItem getItemById(@PathParam("id") long id) {
         return myMarketService.getItemById(id).get();

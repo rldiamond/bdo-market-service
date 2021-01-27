@@ -1,17 +1,17 @@
 package twich.bdo.market.data.api;
 
+import twich.bdo.market.api.MarketApi;
+import twich.bdo.market.api.data.BdoItem;
 import twich.bdo.market.common.Service;
 import twich.bdo.market.common.ServiceInitializationException;
 import twich.bdo.market.common.ServiceShutdownException;
-import twich.bdo.market.data.accessors.MarketDAO;
-import twich.bdo.market.api.data.BdoItem;
-import twich.bdo.market.api.MarketApi;
+import twich.bdo.market.data.accessors.PAMarketDAO;
 
 import java.util.Optional;
 
 public class MarketApiService implements Service, MarketApi {
 
-    private MarketDAO myMarketDao;
+    private PAMarketDAO myMarketDao;
 
     public MarketApiService() {
 
@@ -22,7 +22,7 @@ public class MarketApiService implements Service, MarketApi {
      */
     public void initialize() throws ServiceInitializationException {
         // initialize the market DAO
-        myMarketDao = MarketDAO.getInstance();
+        myMarketDao = PAMarketDAO.getInstance();
 
     }
 
@@ -33,15 +33,6 @@ public class MarketApiService implements Service, MarketApi {
         // destroy the market DAO
         myMarketDao = null;
 
-    }
-
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public Optional<BdoItem> getItemByName(String itemName) {
-        return Optional.ofNullable(myMarketDao.getItemByName(itemName));
     }
 
     /**

@@ -1,14 +1,13 @@
 import org.junit.jupiter.api.Test;
 import twich.bdo.market.api.data.BdoItem;
-import twich.bdo.market.data.accessors.MarketDAO;
+import twich.bdo.market.data.accessors.PAMarketDAO;
 
 public class RestTest {
 
+
     @Test
-    public void test() {
-
-        BdoItem item = MarketDAO.getInstance().getItemById(721003);
+    public void testPA() {
+        BdoItem item = PAMarketDAO.getInstance().getItemById(721003);
         System.out.println(item);
-
     }
 }
