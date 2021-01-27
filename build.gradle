@@ -31,11 +31,21 @@ dependencies {
     compile "org.glassfish.jersey.containers:jersey-container-servlet-core:${jerseyVersion}"
     compile "org.glassfish.jersey.containers:jersey-container-jetty-http:${jerseyVersion}"
     compile "org.glassfish.jersey.media:jersey-media-json-jackson:${jerseyVersion}"
+    compile "com.owlike:genson:1.6"
 
 
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
     testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+jar {
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    manifest {
+        attributes "Main-Class": "twich.bdo.market.application.ServiceApplication"
+    }
 }
 
 test {

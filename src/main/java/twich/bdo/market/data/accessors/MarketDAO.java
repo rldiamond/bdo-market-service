@@ -42,6 +42,7 @@ public class MarketDAO extends BaseDAO {
             try {
                 response = restClient.get(String.valueOf(id) + "/0", MarketResponse.class);
             } catch (Exception ex) {
+                LOGGER.error("Error received", ex);
                 attempt++;
                 LOGGER.warn("Could not fetch data for: " + id + ". Attempt " + attempt + "/" + retries);
                 if (attempt == retries) {
